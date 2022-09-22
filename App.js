@@ -1,117 +1,87 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import { Text, View, StyleSheet ,Button, Image, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react';
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+class TabButton extends Component {
+  render() {
+    return (
+      <TouchableOpacity style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{backgroundColor: 'gray'}}>
+        <Image source={require('./Image/home.png/')} style={MainStyle.image} />
         </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+        <Text style={{marginTop: 5, color: '#A0A0A0'}}>{this.props.name}</Text>
+      </TouchableOpacity>
+    )
+  }
+}
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+class Tab2 extends Component {
+  render() {
+    return(
+      <View style={MainStyle.taps}>
+        <TabButton name="홈" src = "./Image/home.png/" />
+        <TabButton name="시간표" src = "./Images/sche.png/"/>
+        <TabButton name="커뮤니티" src = "./Image/comu.png/"/>
+        <TabButton name="모임" src = "./Image/menu2.png/"/>
+        <TabButton name="더보기" src = "./Image/etc.png/"/>
+      </View>
+    )
+
+  }
+}
+
+function App() {
+  return (
+    <>
+      <View style={MainStyle.container2}>
+      
+      </View>
+
+      <View style={MainStyle.container4}>
+      </View>
+
+      <View style={MainStyle.container3}>
+        <Tab2 />
+      </View>
+    </>
+  )
+}
+
+
+
+
+
+const MainStyle = StyleSheet.create({
+  taps: {
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderTopWidth: 0.5,
+    borderColor: '#A0A0A0',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  image:
+  {
+    height: 30, width: 30
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+
+  container2: {
+    flex: 1,
+    border: "1px solid red",
   },
-  highlight: {
-    fontWeight: '700',
+  container3:
+  {
+    flex: 0.5,
+    border: "1px solid red",
   },
+  container4:
+  {
+    flex: 3,
+    border: "solid",
+    borderWidth: 1
+  },
+  button:
+  {
+  }
 });
 
 export default App;
